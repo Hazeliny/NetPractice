@@ -13,11 +13,25 @@ Project as a general practical exercise to learn about networking and subnetting
 10.0.0.0 – 10.255.255.255     (16,777,216 IP addresses)
 
 
+Example:
 
-102.198.231.0   | Reserved to represent the **network address**.
+IP address   |   102.198.231.125
 
-102.198.231.127 | Reserved as the **broadcast address**; used to send packets to all hosts of a network.
+mask         |   255.255.255.128      ===>    255.255.255.10000000
 
+apply the mask to the IP address through a **bitwise AND** to find the network address of the IP
+
+network address    |    102.198.231.0
+
+so possible IP addresses range is: 102.198.231.1(0000000 ~ 1111111), i.e. 102.198.231.0 ~ 102.198.231.127
+
+( Reserved to represent the **network address**    |    102.198.231.0 )
+
+( Reserved as the **broadcast address**; used to send packets to all hosts of a network    |    102.198.231.127 )
+
+( Reserved as gateway address  |  102.198.231.1 )
+
+So, available IP addresses are: 102.198.231.2 ~ 102.198.231.126
 
 
 **Router**
@@ -46,10 +60,15 @@ internet service provider (ISP)
 
 Internet Protocol version 4 (IPv4) defines an IP address as a 32-bit number. IP (IPv6), using 128 bits for the IP address, was standardized in 1998.
 
-apply the mask to the IP address through a **bitwise AND** to find the network address of the IP
+The mask can also be represented with the Classless Inter-Domain Routing (CIDR). This form represents the mask as a slash "/", followed by the number of bits that serve as the network address. /30 means the first 30 bits of IP address present network address, and the last 2 bits present host address.
 
-The mask can also be represented with the Classless Inter-Domain Routing (CIDR). This form represents the mask as a slash "/", followed by the number of bits that serve as the network address.
+**Switch** hasn't interface, it only distributes packets to its local network, can't talk directly to a network outside of its own; while **router** has interface, which is used to connect all the networks, the IP addresses on the interface can not overlap those on other interfaces.
 
+**Routing table** exists on router and network host:
+
+(Router)  (Destination) 0.0.0.0/0  ===>  93.198.15.253 (next hop)    next hop means the IP address of next router on the packet's way.
+
+subnet mask is to distinguish between a network address and a host address in IP address.
 
 reserved for **loopback**: 127.0.0.0/8
 
