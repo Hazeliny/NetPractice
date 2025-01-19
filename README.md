@@ -73,7 +73,7 @@ subnet mask is to distinguish between a network address and a host address in IP
 reserved for **loopback**: 127.0.0.0/8
 
 
-In TCP and UDP, a port number is represented by a 16-bit unsigned integer, and there are three types of ports.
+In TCP and UDP, a **port** number is represented by a 16-bit unsigned integer, and there are three types of ports.
 
 Ports 0 to 1023 are reserved for specific services and protocols, such as HTTP (port 80), FTP (port 21), and SSH (port 22). They require administrative privileges to use
 
